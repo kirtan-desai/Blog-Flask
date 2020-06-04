@@ -8,22 +8,55 @@
             <legend class="border-bottom mb-4">Join Today</legend>
             <div class="form-group">
                 {{ form.username.label(class="form-control-label")}}
-                {{ form.username(class="form-control form-control-sm")}}
+                {%if form.username.errors%}
+                        {{ form.username(class="form-control form-control-sm is-invalid")}}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                                <p>{{error}}</p>                   
+                            {% endfor %}   
+                        </div>
+                    {% else %}        
+                        {{ form.username(class="form-control form-control-sm")}}
+                    {%endif%} 
             </div>
             <div class="form-group">
                 {{ form.email.label(class="form-control-label")}}
-                {{ form.email(class="form-control form-control-sm")}}
+                {%if form.email.errors%}
+                        {{ form.email(class="form-control form-control-sm is-invalid")}}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <p>{{error}}</p>                   
+                            {% endfor %}   
+                        </div>
+                    {% else %}        
+                        {{ form.email(class="form-control form-control-sm")}}
+                    {%endif%} 
             </div>
             <div class="form-group">
                 {{ form.password.label(class="form-control-label")}}
-                {{ form.password(class="form-control form-control-sm")}}
+                {%if form.password.errors%}
+                        {{ form.password(class="form-control form-control-sm is-invalid")}}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <p>{{error}}</p>                   
+                            {% endfor %}   
+                        </div>
+                    {% else %}        
+                        {{ form.password(class="form-control form-control-sm")}}
+                    {%endif%} 
             </div>
             <div class="form-group">
-                {{ form.confirm_password.label(class="form-control-label")}}
+                {{ form.confirm_password.label(class="form-control-label")}} 
                     {%if form.confirm_password.errors%}
-                        <p>{{form.confirm_password.errors}}</p>
-                    {%endif%}
-                {{ form.confirm_password(class="form-control form-control-sm")}}
+                        {{ form.confirm_password(class="form-control form-control-sm is-invalid")}}
+                        <div class="invalid-feedback">
+                            {% for error in form.confirm_password.errors %}
+                                <p>{{error}}</p>                   
+                            {% endfor %}   
+                        </div>
+                    {% else %}        
+                        {{ form.confirm_password(class="form-control form-control-sm")}}
+                    {%endif%} 
             </div>
         </fieldset>
         <div class="form-group">
